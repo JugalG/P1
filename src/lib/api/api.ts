@@ -4,14 +4,15 @@ const BASE_URL = "http://localhost:8000";
 
 //users
 export async function loginUser(email: string, password: string) {
-  const res = await fetch(`http://localhost:8000/users?email=${email}&password=${password}`);
+  const res = await fetch(
+    `http://localhost:8000/users?email=${email}&password=${password}`
+  );
   const data = await res.json();
-  if(res.ok && data.length>0){
+  if (res.ok && data.length > 0) {
     console.log("Logged in succcessfully");
   }
   return data.length > 0 ? data[0] : null;
 }
-
 
 //cart(user-data)
 
@@ -25,28 +26,33 @@ export async function fetchUserCart(userId: string): Promise<Product[]> {
   // return data.cart ;
 }
 
-export async function updateUserCartItem(userId: string, item: Product): Promise<void> {
+export async function updateUserCartItem(
+  userId: string,
+  item: Product
+): Promise<void> {
   const userCartRes = await fetch(`${BASE_URL}/user-data/${userId}`);
   if (!userCartRes.ok) throw new Error("Failed to fetch user cart");
   const userCart = await userCartRes.json();
   const updatedCart = {
     ...userCart.cart,
-    [item.id]: item
+    [item.id]: item,
   };
   await fetch(`${BASE_URL}/user-data/${userId}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ cart: updatedCart })
+    body: JSON.stringify({ cart: updatedCart }),
   });
 }
-export async function updateUserCart(userId: string, itemToRemove: Product): Promise<void> {
+export async function updateUserCart(
+  userId: string,
+  itemToRemove: Product
+): Promise<void> {
   const res = await fetch(`http://localhost:8000/user-data/${userId}`);
   if (!res.ok) throw new Error("Failed to fetch user cart");
 
   const userCartData = await res.json();
   const cart: Record<string, Product> = userCartData.cart || {};
 
-  // Remove the item from cart
   delete cart[itemToRemove.id];
 
   const updatedRes = await fetch(`http://localhost:8000/user-data/${userId}`, {
@@ -57,32 +63,29 @@ export async function updateUserCart(userId: string, itemToRemove: Product): Pro
     body: JSON.stringify({ cart }),
   });
 
-  if (!updatedRes.ok) throw new Error("Failed to update user cart after deletion");
+  if (!updatedRes.ok)
+    throw new Error("Failed to update user cart after deletion");
 }
-// export async function updateUserCart(userId: string, newData: {}): Promise<void> {
-//   if(newData){
-//     await fetch(`${BASE_URL}/user-data/${userId}`, {
-//       method: "PATCH",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({ cart: {newData} })
-//     });
-//   }
-// }
 
 export async function emptyUserCart(userId: string): Promise<void> {
   await fetch(`${BASE_URL}/user-data/${userId}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ cart: {} })
+    body: JSON.stringify({ cart: {} }),
   });
 }
 
-const convertToCartObject = (cart: Product[]) =>
+const convertToCartObject = (cart: Product[]) => {
   cart.reduce((acc, item) => {
     acc[item.id] = item;
     return acc;
   }, {} as Record<string, Product>);
-export async function syncCartWithServer(userId:string , cartProducts:Product[]){
+};
+
+export async function syncCartWithServer(
+  userId: string,
+  cartProducts: Product[]
+) {
   const cartObj = convertToCartObject(cartProducts);
   console.log("updated cart object to server");
   const res = await fetch(`http://localhost:8000/user-data/${userId}`, {
@@ -95,5 +98,4 @@ export async function syncCartWithServer(userId:string , cartProducts:Product[])
 
   if (!res.ok) throw new Error("Failed to update cart on server");
   return res;
-  
 }

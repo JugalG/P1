@@ -1,27 +1,26 @@
+'use client';
 import { getSessionUser } from "@/lib/features/utilities/session";
 import LogoutButton from "./logoutButton";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-// export default function Header({children}:any) {
-//   return (
-//     <header className="govuk-header" data-module="govuk-header">
-//       <div className="govuk-header__container govuk-width-container">
-//         <div className="header">
-//           <h1>Zodiac</h1>
-//           {/* <Image src='/cloth-header.jpg'
-//                       width={500}
-//                       height={100}
-//                       alt="Picture of the author"
-//                     /> */}
-//         {children}
-//         </div>
-//       </div>
-//     </header>
-//   );
-// }
+type userType={
+email:string;
+id:string;
+name:string;
+username:string;
 
-export default function Header() {
-    const user = getSessionUser();
+}
+
+
+export default function Header(userObject :{userObj: userType | null}) {
+    const [user ,setUser] = useState<userType | null>(null);
+    useEffect(
+      ()=>{
+        const session = userObject.userObj;
+        setUser(session || null);
+      }
+      ,[]);
     return(
     <header className="p-6 govuk-header" data-module="govuk-header" data-govuk-header-init="">
       <div className="  w-[100%] pl-[10%] pr-[10%] flex flex-row justify-center items-center">
@@ -32,10 +31,10 @@ export default function Header() {
             </Link>
           </div>
           <div>
-            {(user) && <p className="text-left">Welcome, {user.email}</p>}
+            {(user) && <p className="text-left">Welcome, {user.name}</p>}
           </div>
           <div className="flex items-center! ">
-            {user && <LogoutButton/>}
+            {(user) && <LogoutButton/>}
           </div>
         </div>
 
@@ -43,49 +42,3 @@ export default function Header() {
 </header>
     );
 }
-
-
-
-//WORKING BACKUP
-// export default function Header() {
-//     const user = getSessionUser();
-//     return(
-//     <header className="p-6 govuk-header" data-module="govuk-header" data-govuk-header-init="">
-//       <div className="  w-[100%] pl-[10%] pr-[10%] flex flex-row justify-center items-center">
-//         <div className="w-[100%] govuk-header__logo-!-padding-0  flex  items-center justify-evenly">
-//           <div className="flex items-center">
-//             <a href="/" className="govuk-header__link govuk-header__link--homepage">
-//               <h1 className=' flex flex-column items-center justify-center '>ZODIAC.co</h1>
-//             </a>
-//           </div>
-//           <div>
-//             {(user) && <p>{user.email}</p>}
-//           </div>
-//           <div className="flex items-center! ">
-//             {user && <LogoutButton/>}
-//           </div>
-//         </div>
-
-//       </div>
-// </header>
-//     );
-// }
-
-
-// export default function Header() {
-//     const user = getSessionUser();
-//     return(
-//         <header className="govuk-header" data-module="govuk-header">
-                // <div className="govuk-header__container ">
-                //   <div className="header">
-                //     {(user) && <p>Hii,{user.name}</p>}
-                //     <h1>ZODIAC.co</h1>
-                //     <div>
-                //        {(user) && <p>{user.email}</p>}
-                //        {user && <LogoutButton/>}
-                //      </div>
-                //    </div>
-                //  </div>
-//               </header>
-//     );
-// }

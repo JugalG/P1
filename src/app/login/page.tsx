@@ -3,10 +3,8 @@ import '@/styles/global.css';
 import Footer from '@/components/common/Footer';
 import Header from '@/components/common/Header';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { loginUser } from '@/lib/api/api';
-import { getSessionUser } from '@/lib/features/utilities/session';
-import usePageRouter from '@/lib/features/utilities/router';
+import { useEffect } from 'react';
+
 type userType={
 email:string;
 id:string;
@@ -21,16 +19,21 @@ export default  function Login() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const session = sessionStorage.getItem('userSession');
-        if(session){const res = await fetch('/api/session',{
+        const session =  sessionStorage.getItem('userSession');
+        if(session){
+          const res = await fetch('/api/session',{
           method:'GET',
-          credentials:'include'
+          credentials:'include',
         });
-        if (res.ok) {
+        const {authenticated} = await res.json();
+        if (res.status === 200 && authenticated) {
           router.push('/homepage');
         } else{
-          await fetch('/api/logout', { method: 'POST' }); 
-          sessionStorage.clear();
+          const logoutRes = await fetch('/api/logout', { method: 'POST' }); 
+          const {status} = await logoutRes.json();
+          if(status===200){
+            sessionStorage.removeItem('userSession');
+          }
         }
       }
       } catch (err) {
@@ -86,7 +89,7 @@ export default  function Login() {
   <>
  
     <div className='govuk-template__header'>
-      <Header />
+      <Header userObj={null} />
     </div>
     <div>
       <div className="govuk-template__main govuk-width-container">

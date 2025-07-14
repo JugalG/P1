@@ -6,7 +6,7 @@ import type { Product } from "@/lib/features/types/product";
 import useCartSync from "@/lib/features/hooks/useCartSync";
 import { emptyUserCart, updateUserCart, updateUserCartItem } from "@/lib/api/api";
 import { getSessionUser } from "@/lib/features/utilities/session";
-import usePageRouter from "@/lib/features/utilities/router";
+import usePageRouter from "@/lib/features/hooks/router";
 import { useEffect, useState } from "react";
 type userType={
 email:string;
@@ -34,7 +34,7 @@ export default function CartWrapper() {
           if (res.ok && data.authenticated) {
             // router('/homepage');
               const userFromSession = getSessionUser();
-              console.log('getSessionUserHook: ',{userFromSession});
+              // console.log('getSessionUserHook: ',{userFromSession});
               setUser(userFromSession);
           } else {
             console.log('Not authenticated. Redirecting...');

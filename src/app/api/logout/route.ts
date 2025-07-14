@@ -12,11 +12,11 @@ import { cookies } from 'next/headers';
 
 export async function POST() {
   (await cookies()).delete('auth-token');
-  return NextResponse.json({ message: "Logged out" });
+  return NextResponse.json({ message: "Logged out" , status:200});
 }
 
 
-export function GET(){
+// export function GET(){
 
-  return NextResponse.redirect(new URL('/login','http://localhost:3000'));
-}
+//   return NextResponse.redirect(new URL('/login','http://localhost:3000'));
+// }

@@ -1,14 +1,10 @@
 'use client';
-import usePageRouter from '@/lib/features/utilities/router';
-import { useEffect, useState } from 'react';
+import usePageRouter from '@/lib/features/hooks/router';
 
 export default function Home() {
-  // const router = usePageRouter();
-    const [authChecked,setAuthChecked] = useState(false);
-  const router = usePageRouter();
-  
+  const router = usePageRouter();  
 
-  useEffect(() => {
+
   const checkAuth = async () => {
     try {
       const res = await fetch('/api/session',{
@@ -16,7 +12,7 @@ export default function Home() {
         credentials:'include'
       });
       const session = sessionStorage.getItem('userSession');
-
+      console.log('session item from /page :',session);
       console.log('data authenticated:',res);
       if (res.ok && session) {
         router('/homepage');
@@ -26,32 +22,55 @@ export default function Home() {
         router('/login');
       }
     } catch (err) {
-      console.error('Auth check failed:', err);
+      console.error('Auth check failed:', err); 
     }
   };
   checkAuth();
-}, []);
-
-
-
-  // useEffect(() => {
-  //   const checkSession = async () => {
-  //     const session = sessionStorage.getItem('userSession');
-
-  //     if (!session) {
-  //       await fetch('/api/logout', { method: 'POST' }); 
-  //       sessionStorage.clear();
-  //       router('/login');
-  //     } else {
-  //       router('/homepage');
-  //     }
-  //   };
-
-  //   checkSession();
-  // }, [router]);
 
   return <p style={{display:'flex',justifyContent:'center',alignItems:'center', width:'100vw' ,height:'100%'}}>Redirecting...</p>;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

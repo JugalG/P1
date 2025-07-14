@@ -14,7 +14,6 @@ export default function LogoutButton() {
         credentials: 'include',
       });
 
-      // Clear sessionStorage (used for client-side session)
       sessionStorage.removeItem('userSession');
 
       // Redirect to login page

@@ -1,3 +1,4 @@
+
 const SESSION_TIMEOUT = 10 * 60 * 1000;
 
 export function getSessionUser() {

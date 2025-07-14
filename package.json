@@ -6,11 +6,15 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/postcss": "^4.1.11",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^24.0.10",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
@@ -26,7 +30,8 @@
     "scss": "^0.2.4",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3",
-    "use-debounce": "^10.0.5"
+    "use-debounce": "^10.0.5",
+    "whatwg-fetch": "^3.6.20"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -36,6 +41,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
+    "jest-environment-jsdom": "^30.0.4",
     "sass": "^1.89.2",
     "tailwindcss": "^4",
     "typescript": "^5"
