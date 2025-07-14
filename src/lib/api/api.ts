@@ -76,7 +76,7 @@ export async function emptyUserCart(userId: string): Promise<void> {
 }
 
 const convertToCartObject = (cart: Product[]) => {
-  cart.reduce((acc, item) => {
+  return cart.reduce((acc, item) => {
     acc[item.id] = item;
     return acc;
   }, {} as Record<string, Product>);

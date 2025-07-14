@@ -28,7 +28,7 @@ export default function CartWrapper() {
           if (res.ok && data.authenticated) {
             // router('/homepage');
               const userFromSession = getSessionUser();
-              // console.log('getSessionUserHook: ',{userFromSession});
+              console.log('getSessionUserHook: ',{userFromSession});
               setUser(userFromSession);
           } else {
             console.log('Not authenticated. Redirecting...');

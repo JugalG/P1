@@ -13,12 +13,12 @@ export default function useCartSync(userId: string) {
   const isInitialLoad = useRef(true);
   // console.log("cart Sync function called: Cart synced");
   useEffect(() => {
-    if (userId === "") return;
+    if (userId === '') return;
 
     const fetchCartFromServer = async () => {
       try {
         const serverCart = await fetchUserCart(userId);
-        const tempProductData: Product[] = Object.values(serverCart).map(
+        const cleanedProducts: Product[] = Object.values(serverCart).map(
           (item: any) => ({
             id: item.id,
             title: item.title,
@@ -36,7 +36,7 @@ export default function useCartSync(userId: string) {
 
         dispatch(cartActions.emptyCart());
 
-        dispatch(cartActions.setCart(tempProductData));
+        dispatch(cartActions.setCart(cleanedProducts));
       } catch (error) {
         console.error("Error loading cart:", error);
         dispatch(cartActions.emptyCart());

@@ -32,7 +32,7 @@ async function fetchAndCacheExternalProducts() {
     const res = await fetch('https://fakestoreapi.com/products');
     if (!res.ok) throw new Error('Failed to fetch products')
     const data = await res.json();
-    const tempProductData: Product[] = data.map((p: Product) => ({
+    const cleaned: Product[] = data.map((p: Product) => ({
       id: p.id,
       title: p.title,
       price: p.price,
@@ -46,13 +46,13 @@ async function fetchAndCacheExternalProducts() {
       }
     }));
     // console.log(cleaned);
-    const toStore = {timestamp:Date.now(), data:tempProductData};
+    const toStore = {timestamp:Date.now(), data:cleaned};
 
     const dir1 = path.dirname(CACHE_PATH);
     
     await fs.mkdir(dir1,{recursive:true});
     await fs.writeFile(CACHE_PATH,JSON.stringify(toStore,null,2));
-    return tempProductData;
+    return cleaned;
   }catch (err: any) {
     console.error('Error chacing or fetching the products; Please check network connectivity.');
     return [];
