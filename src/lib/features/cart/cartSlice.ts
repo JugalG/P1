@@ -13,10 +13,6 @@ const initialState: cart = {
   cartProducts: [],
 };
 
-type decreaseCartItemType={
-    product: Product;
-};
-
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -37,11 +33,11 @@ const cartSlice = createSlice({
       return state;
     },
 
-    removeFromCart(state, action: PayloadAction<decreaseCartItemType>) {
+    removeFromCart(state, action: PayloadAction<Product>) {
       const {cartProducts} :{cartProducts:Product[]} = state;
-      if (cartProducts && action.payload.product.id) {
+      if (cartProducts && action.payload.id) {
         const foundItem = cartProducts.find((item)=>
-            item.id === action.payload.product.id
+            item.id === action.payload.id
         );
         
         
@@ -50,7 +46,7 @@ const cartSlice = createSlice({
         }else if(foundItem && foundItem.quantity == 1){
           console.log('quantity zero hogaya');
           
-            state.cartProducts= cartProducts.filter((item)=> item.id !== action.payload.product.id );
+            state.cartProducts= cartProducts.filter((item)=> item.id !== action.payload.id );
         }
       }
       else throw new Error('Data could not be loaded.');      

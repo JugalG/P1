@@ -3,14 +3,7 @@ import { getSessionUser } from "@/lib/features/utilities/session";
 import LogoutButton from "./logoutButton";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-type userType={
-email:string;
-id:string;
-name:string;
-username:string;
-
-}
+import { userType } from "@/lib/features/types/product";
 
 
 export default function Header(userObject :{userObj: userType | null}) {

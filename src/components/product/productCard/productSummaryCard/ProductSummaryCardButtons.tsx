@@ -12,10 +12,6 @@ type pscbType ={
 
 const ProductSummaryCardButtons = ({product,onQuickView}:pscbType ) => {
   const dispatch = useDispatch();
-  
-  
-
-
   function handleAdddToCartClick(product: Product) {
     dispatch(cartActions.addToCart(product))
   }

@@ -13,7 +13,6 @@ const initialState: ProductState = {
   error: null,
 };
 
-
 const productSlice = createSlice({
   name: 'products',
   initialState,
