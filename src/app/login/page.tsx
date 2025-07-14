@@ -83,57 +83,62 @@ export default  function Login() {
     };
 
   return (
-    <main className="govuk-main-wrapper">
+  <>
+ 
+    <div className='govuk-template__header'>
       <Header />
-      <>
-        <div className="govuk-width-container">
-          <main className="govuk-main-wrapper govuk-!-padding-top-7">
-            <h1 className="govuk-heading-l">Login</h1>
-            <form onSubmit={handleLogin} className="login-form-container">
-              <div className="govuk-form-group">
-                <label className="govuk-label" htmlFor="email">
-                  Email address
-                </label>
-                <input
-                  className="govuk-input login-input"
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
+    </div>
+    <div>
+      <div className="govuk-template__main govuk-width-container">
+        <main className="govuk-main-wrapper govuk-!-padding-top-7">
+          <h1 className="govuk-heading-l">Login</h1>
+          <form onSubmit={handleLogin} className="login-form-container">
+            <div className="govuk-form-group">
+              <label className="govuk-label" htmlFor="email">
+                Email address
+              </label>
+              <input
+                className="govuk-input login-input"
+                id="email"
+                name="email"
+                type="email"
+                required
                 />
-              </div>
+            </div>
 
-              <div className="govuk-form-group">
-                <label className="govuk-label" htmlFor="password">
-                  Password
-                </label>
-                <input
-                  className="govuk-input login-input"
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                />
-              </div>
+            <div className="govuk-form-group">
+              <label className="govuk-label" htmlFor="password">
+                Password
+              </label>
+              <input
+                className="govuk-input login-input"
+                id="password"
+                name="password"
+                type="password"
+                required
+              />
+            </div>
 
-              <button type="submit" className="govuk-button">
-                Login
-              </button>
-            </form>
-          </main>
-        </div>
-      </>
+            <button type="submit" className="govuk-button">
+              Login
+            </button>
+          </form>
+        </main>
+      </div>
+    </div>
+    <div className='govuk-template__footer'  >
       <Footer />
-    </main>
+    </div>
+</>
   );
 }
 
 
     // const handleLogout = async ()=>{
-    //   if((sessionStorage.getItem('userSession')!==null )){
-    //         console.log('Handle Logout Called');
-    //         sessionStorage.clear();
-            
+      //   if((sessionStorage.getItem('userSession')!==null )){
+        //         console.log('Handle Logout Called');
+        //         sessionStorage.clear();
+        
     //         const logoutApi = await  fetch('/api/logout',{
     //             method:'POST'
     //         })

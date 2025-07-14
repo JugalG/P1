@@ -1,5 +1,6 @@
 import { getSessionUser } from "@/lib/features/utilities/session";
 import LogoutButton from "./logoutButton";
+import Link from "next/link";
 
 // export default function Header({children}:any) {
 //   return (
@@ -22,17 +23,69 @@ import LogoutButton from "./logoutButton";
 export default function Header() {
     const user = getSessionUser();
     return(
-        <header className="govuk-header" data-module="govuk-header">
-                <div className="govuk-header__container govuk-width-container">
-                  <div className="header">
-                    {(user) && <p>Hii,{user.name}</p>}
-                    <h1>ZODIAC.co</h1>
-                    <div>
-                      {/* {(user) && <p>{user.email}</p>} */}
-                      {user && <LogoutButton/>}
-                    </div>
-                  </div>
-                </div>
-              </header>
+    <header className="p-6 govuk-header" data-module="govuk-header" data-govuk-header-init="">
+      <div className="  w-[100%] pl-[10%] pr-[10%] flex flex-row justify-center items-center">
+        <div className="w-[100%] govuk-header__logo-!-padding-0 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-evenly">
+          <div className="flex items-center">
+            <Link href="/" className="govuk-header__link govuk-header__link--homepage">
+              <h1 className=' flex flex-column items-center justify-center '>ZODIAC.co</h1>
+            </Link>
+          </div>
+          <div>
+            {(user) && <p className="text-left">Welcome, {user.email}</p>}
+          </div>
+          <div className="flex items-center! ">
+            {user && <LogoutButton/>}
+          </div>
+        </div>
+
+      </div>
+</header>
     );
 }
+
+
+
+//WORKING BACKUP
+// export default function Header() {
+//     const user = getSessionUser();
+//     return(
+//     <header className="p-6 govuk-header" data-module="govuk-header" data-govuk-header-init="">
+//       <div className="  w-[100%] pl-[10%] pr-[10%] flex flex-row justify-center items-center">
+//         <div className="w-[100%] govuk-header__logo-!-padding-0  flex  items-center justify-evenly">
+//           <div className="flex items-center">
+//             <a href="/" className="govuk-header__link govuk-header__link--homepage">
+//               <h1 className=' flex flex-column items-center justify-center '>ZODIAC.co</h1>
+//             </a>
+//           </div>
+//           <div>
+//             {(user) && <p>{user.email}</p>}
+//           </div>
+//           <div className="flex items-center! ">
+//             {user && <LogoutButton/>}
+//           </div>
+//         </div>
+
+//       </div>
+// </header>
+//     );
+// }
+
+
+// export default function Header() {
+//     const user = getSessionUser();
+//     return(
+//         <header className="govuk-header" data-module="govuk-header">
+                // <div className="govuk-header__container ">
+                //   <div className="header">
+                //     {(user) && <p>Hii,{user.name}</p>}
+                //     <h1>ZODIAC.co</h1>
+                //     <div>
+                //        {(user) && <p>{user.email}</p>}
+                //        {user && <LogoutButton/>}
+                //      </div>
+                //    </div>
+                //  </div>
+//               </header>
+//     );
+// }

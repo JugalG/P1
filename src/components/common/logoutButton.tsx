@@ -26,9 +26,9 @@ export default function LogoutButton() {
 
   return (
     <button
-      className="govuk-button govuk-button--warning"
+      className="govuk-button govuk-!-margin-0 govuk-button--warning"
       type="button"
-      onClick={handleLogout}
+      onClick={handleLogout} 
     >
       Logout
     </button>

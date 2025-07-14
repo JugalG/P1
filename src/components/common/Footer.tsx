@@ -3,7 +3,7 @@ export default function Footer() {
     return (
         <footer>
             <footer className="govuk-footer">
-                <div className="govuk-width-container">
+                <div className="pl-[10%] pr-[10%] govuk-width-container-full ">
                     <div className="govuk-footer__meta">
                         <div className="govuk-footer__meta-item govuk-footer__meta-item--grow">
                             <h2 className="govuk-visually-hidden">Support links</h2>

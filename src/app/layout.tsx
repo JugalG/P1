@@ -14,7 +14,7 @@ export default function RootLayout({children,}:{children: React.ReactNode}) {
     <>
     <html lang="en">
       <StoreProvider>
-        <body className="govuk-template__body">
+        <body className="govuk-template ">
             {children}
         </body>
       </StoreProvider>
