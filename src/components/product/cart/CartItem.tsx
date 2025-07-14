@@ -1,4 +1,3 @@
-'use client';
 import "@/styles/CartItem.css";
 import Image from "next/image";
 import { FaTrashAlt } from "react-icons/fa";
