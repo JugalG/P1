@@ -3,7 +3,7 @@ import { Product } from "@/lib/features/types/product.ts";
 import useProductData from "./productData.ts";
 import ProductSummaryCard from "./productSummaryCard/ProcductSummaryCard.tsx";
 import SortDropdown from "./sortDropdown.tsx";
-import { sortProducts } from "@/lib/helper/helper.ts";
+import { sortProducts } from "@/lib/helper/sortingLogicHelper.ts";
 import { useState } from "react";
 import ProductQuickViewModal from "./productQuickView/ProductQuickViewModal.tsx";
 
