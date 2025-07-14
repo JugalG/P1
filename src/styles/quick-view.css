@@ -1,0 +1,102 @@
+.quick-view-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(57, 55, 55, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+ 
+.quick-view-modal {
+  background-color: #fff;
+  padding: 2rem;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 1em;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+ .quick-view-modal::-webkit-scrollbar {
+            display: none;
+        }
+ 
+.quick-view-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+ 
+.quick-view-grid hr {
+  border: none;
+  border-left: 1px solid #ccc;
+  height: auto;
+  align-self: stretch;
+  margin: 0;
+}
+ 
+.quick-view-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+ 
+.quick-view-info h4,
+.quick-view-info h3 {
+  margin: 0;
+  font-weight: 500;
+  color: #222;
+}
+ 
+.quick-view-info p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+ 
+.mmmm {
+  font-style: italic;
+  color: #666;
+}
+ 
+.govuk-heading-m-cust-quick-view {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+ 
+.quick-view-modal img {
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+ 
+@media screen and (max-width: 768px) {
+  .quick-view-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+ 
+  .quick-view-grid hr {
+    display: none;
+  }
+ 
+  .quick-view-info {
+    align-items: center;
+    text-align: center;
+  }
+  
+
+}
+
+

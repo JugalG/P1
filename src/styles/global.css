@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+:root {
+
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  /* background: linear-gradient(180deg, #232029, #231e2d); */
+  color: black;
+}
+
+main {
+  text-align: center;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.govuk-grid-row-cust{
+display: flex;
+flex-direction: row;
+
+}
+
+.govuk-width-container-cust {
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap:1rem;
+}
+.login-form-container {
+  max-width: 25rem;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.login-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pagination-controls{
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 16px 0;
+}
+@media (max-width:840px) {
+  .govuk-width-container-cust{
+  
+    flex-direction: column;
+  }
+  .govuk-grid-row-cust{
+    flex-direction: column;
+  }
+  .card-grid-section{
+    width: 100% !important;
+  }
+  .cart-section{
+    width: 100% !important;
+    order: -1;
+  }
+}

@@ -1,0 +1,36 @@
+/homepage
+  <Header />
+  <ProductGrid />
+    useProductData() (productData.ts)
+      1. fetch data from @/api/products --> cached data 
+        -> 'api/products' ->GET()
+            1. local cahced data valid? NextResponse
+            2. invalid? fetch from externalsource  fakestoreapi.com/
+                Write to cached   
+                return cleaned json data  NextResponse
+      2. dispatch fetchProductSuccess(returnedData)
+
+    <SortDropdown /> //  returns the <select> component
+    <ProductSummaryCard /> 
+
+      <ProductSUmmaryCardButtons />
+        dispatch AddToCart()
+        setCloseModal
+    <ProductQuickViewModal />
+      <ProductQuickView />
+        <QuickViewModalCloseButton />
+
+  <CartWrapper />
+    useCartSync(userId) //hooks/useCartSync.ts
+      1. get state of Cart 
+      2. useEffect fetchCartFromServer()
+        -> fetchuserCart(userId) /lib/features/api/api
+        -> dispatch setCart(cartData)
+      3. useEffect syncCartToServer()
+        -> syncCartWithServer(userId, cartObj) /lib/features/api/api
+          -> PATCH localhost:8000/user-data/${userId} //json-server-db
+              data -> cart:CartObj
+
+  <Footer />
+
+
