@@ -1,6 +1,7 @@
 <details> <summary>📁 <code>architecture.md</code> (copy-paste ready)</summary>
 # System Architecture Diagram (Mermaid.js)
 
+```mermaid
 flowchart TB
     %% Frontend Browser Layer
     subgraph "Frontend Browser" 
@@ -129,5 +130,5 @@ flowchart TB
     classDef backend fill:#F0F0F0,stroke:#6A737D,stroke-width:1px
     classDef db fill:#EAEAEA,stroke:#6A737D,stroke-width:1px,stroke-dasharray: 5 5
     classDef external fill:#F5F0FF,stroke:#6F42C1,stroke-width:1px
-
+```
 </details>
