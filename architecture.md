@@ -1,7 +1,6 @@
 <details> <summary>📁 <code>architecture.md</code> (copy-paste ready)</summary>
 # System Architecture Diagram (Mermaid.js)
 
-```mermaid
 flowchart TB
     %% Frontend Browser Layer
     subgraph "Frontend Browser" 
